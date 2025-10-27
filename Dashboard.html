@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coolmate Sustain-Tech Dashboard</title>
+
+    <!-- ✅ Heroicons (SVG version that works) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard">
+        <nav class="sidebar">
+            <div>
+                <h1>Coolmate</h1>
+                <span>Sustain-Tech Platform</span>
+            </div>
+            <div class="nav">
+                <a href="/Mockup/Dashboard.html" class="active"><i data-feather="bar-chart-2"></i>Dashboard</a>
+                <a href="#"><i data-feather="archive"></i>Inventory</a>
+                <a href="#"><i data-feather="truck"></i>Suppliers</a>
+                <a href="/Mockup/mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+                <a href="/Mockup/mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+                <a href="/Mockup/mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
+                <a href="#"><i data-feather="settings"></i>Settings</a>
+            </div>
+        </nav>
+
+        <main class="main">
+            <header>
+                <h2>Transparency Dashboard</h2>
+                <p>Real-time data for Coolmate’s sustainable supply chain (Project: Neighbor’s KIDS)</p>
+            </header>
+
+            <!-- KPI GRID -->
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <h3>Fabric Waste Reduction (YTD)</h3>
+                        <i data-feather="trending-down"></i>
+                    </div>
+                    <div class="kpi-value">
+                        <span class="value">24.7</span><span class="unit">%</span>
+                    </div>
+                    <p class="kpi-meta">Target: 20–30% Reduction</p>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <h3>Avg. Carbon Footprint / Product</h3>
+                        <i data-feather="cloud"></i>
+                    </div>
+                    <div class="kpi-value">
+                        <span class="value">8.2</span><span class="unit"> kg CO₂</span>
+                    </div>
+                    <p class="kpi-meta">vs. 11.5 kg (Industry Avg.)</p>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <h3>Traceability Score</h3>
+                        <i data-feather="shield"></i>
+                    </div>
+                    <div class="kpi-value">
+                        <span class="value">100</span><span class="unit">%</span>
+                    </div>
+                    <p class="kpi-meta">Verified via Open Data Ledger</p>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <h3>Inventory Resale Rate</h3>
+                        <i data-feather="dollar-sign"></i>
+                    </div>
+                    <div class="kpi-value">
+                        <span class="value">18.5</span><span class="unit">%</span>
+                    </div>
+                    <p class="kpi-meta">Deadstock inventory resold/upcycled</p>
+                </div>
+            </section>
+
+            <!-- CHART & WORKFLOW -->
+            <section class="chart-grid">
+                <div class="chart-card">
+                    <h3>Carbon Footprint (YTD)</h3>
+                    <div class="bar-chart" id="barChart">
+                        <div class="bar" style="height: 35%;" title="Jan"></div>
+                        <div class="bar" style="height: 55%;" title="Feb"></div>
+                        <div class="bar" style="height: 70%;" title="Mar"></div>
+                        <div class="bar" style="height: 80%;" title="Apr"></div>
+                        <div class="bar" style="height: 60%;" title="May"></div>
+                        <div class="bar" style="height: 40%;" title="Jun"></div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Recycling Workflow (A3)</h3>
+                    <ul class="workflow-list">
+                        <li class="workflow-item">
+                            <div class="workflow-icon"><i data-feather="alert-triangle"></i></div>
+                            <div>
+                                <h4>Inventory Aging Alert</h4>
+                                <p>Lot #22B (Cotton) > 90 days</p>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <div class="workflow-icon"><i data-feather="lightbulb"></i></div>
+                            <div>
+                                <h4>AI Suggestion: Resale</h4>
+                                <p>Match found: SME "VinaCraft"</p>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <div class="workflow-icon"><i data-feather="check-circle"></i></div>
+                            <div>
+                                <h4>Action: Waste Reduced</h4>
+                                <p>Saved 250kg of fabric waste</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ✅ Feather Icons Initialize -->
+    <script>
+        feather.replace();
+
+        // Animate bar heights on load
+        window.addEventListener("load", () => {
+            const bars = document.querySelectorAll(".bar");
+            bars.forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = "0%";
+                setTimeout(() => (bar.style.height = height), 200);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Trend Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <nav class="sidebar">
+            <div>
+                <h1>Coolmate</h1>
+                <span>Sustain-Tech Platform</span>
+            </div>
+            <div class="nav">
+                <a href="/Mockup/Dashboard.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
+                <a href="#"><i data-feather="archive"></i>Inventory</a>
+                <a href="#"><i data-feather="truck"></i>Suppliers</a>
+                <a href="/Mockup/mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+                <a href="/Mockup/mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+                <a href="/Mockup/mockup-trend-analyzer.html" class="active"><i data-feather="trending-up"></i>Trend Analyst</a>
+                <a href="#"><i data-feather="settings"></i>Settings</a>
+            </div>
+        </nav>
+  <main class="main">
+    <div class="panel">
+      <h2><i data-feather="trending-up"></i> AI Trend Analyzer</h2>
+      <p>Predicting demand to prevent inventory surplus.</p>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+        <div style="background: #f8f8f8; border: 1px solid var(--light-beige); border-radius: 12px; padding: 20px;">
+          <h3>Demand Forecast: Q1 - Q3 2026</h3>
+          <canvas id="trendChart" height="200"></canvas>
+          <p style="margin-top:15px; font-size:0.9rem;">
+            <span style="background: var(--darkest); width:10px; height:10px; display:inline-block; margin-right:5px;"></span>
+            'Oversized Logo Tee' (Declining)
+            <span style="background: var(--taupe); width:10px; height:10px; display:inline-block; margin:0 5px 0 20px;"></span>
+            Minimalist Core (Stable)
+          </p>
+        </div>
+
+        <div style="background: var(--taupe); color: var(--white); padding: 20px; border-radius: 12px;">
+          <h3>OVERPRODUCTION RISK</h3>
+          <p>Forecast suggests 'Oversized Logo Tee' is declining. Immediate reduction advised.</p>
+          <div style="margin-top:10px; font-size:0.9rem;">
+            <p>AI Recommendation: <b style="color:red;">REDUCE BATCH SIZE</b></p>
+            <p>Confidence Score: <b>95%</b></p>
+            <p>Potential Savings: <b>2,500 units</b></p>
+          </div>
+          <button style="width:100%; margin-top:10px; background: var(--light-beige); color: var(--darkest);">Confirm Production Change</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    new Chart(document.getElementById("trendChart"), {
+      type: 'line',
+      data: {
+        labels: ["Current", "Forecast", "Q3 2026"],
+        datasets: [
+          {
+            label: "Oversized Logo Tee",
+            data: [90, 65, 40],
+            borderColor: "#222831",
+            borderWidth: 2,
+            fill: false,
+          },
+          {
+            label: "Minimalist Core",
+            data: [80, 78, 77],
+            borderColor: "#948979",
+            borderWidth: 2,
+            fill: false,
+          }
+        ]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: false, ticks: { color: "#393E46" } },
+          x: { ticks: { color: "#393E46" } }
+        }
+      }
+    });
+
+    // 👇 GỌI SAU KHI DOM TẠO XONG
+    feather.replace();
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Fabric Analyst | Coolmate Sustain-Tech</title>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="sidebar">
+            <div>
+                <h1>Coolmate</h1>
+                <span>Sustain-Tech Platform</span>
+            </div>
+            <div class="nav">
+                <a href="/Mockup/Dashboard.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
+                <a href="#"><i data-feather="archive"></i>Inventory</a>
+                <a href="#"><i data-feather="truck"></i>Suppliers</a>
+                <a href="/Mockup/mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+                <a href="/Mockup/mockup-fabric-analysis.html" class="active"><i data-feather="layers"></i>Fabric Optimization</a>
+                <a href="/Mockup/mockup-trend-analyzer.html" ><i data-feather="trending-up"></i>Trend Analyst</a>
+                <a href="#"><i data-feather="settings"></i>Settings</a>
+            </div>
+        </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <div class="panel">
+            <h2><i data-feather="activity"></i> AI Fabric Optimization</h2>
+            <p>Performance and environmental metric analysis for sustainable materials.</p>
+
+            <div class="analysis-grid">
+                <!-- LEFT SIDE -->
+                <div>
+                    <h3 style="color: #393E46; margin-top: 0;">Performance Metrics (Cotton Batch #45)</h3>
+
+                    <div class="metric-item">
+                        <div>Durability & Longevity</div>
+                        <div><b>92%</b></div>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 92%;"></div>
+                    </div>
+
+                    <div class="metric-item">
+                        <div>Recyclability Potential</div>
+                        <div><b>88%</b></div>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 88%;"></div>
+                    </div>
+
+                    <div class="metric-item">
+                        <div>Local Climate Suitability</div>
+                        <div><b>95%</b></div>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 95%;"></div>
+                    </div>
+
+                    <div class="metric-item">
+                        <div>Microplastic Shedding Risk</div>
+                        <div style="font-weight: bold; color: green;">LOW</div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE -->
+                <div style="display: flex; align-items: center;">
+                    <div class="recommendation" style="width: 100%;">
+                        <i data-feather="lightbulb"></i>
+                        <h3>AI BEST CHOICE</h3>
+                        <span>Organic Bamboo</span>
+                        <p>Best for tropical climates with minimal pollution footprint.</p>
+                        <button>View Sourcing Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>

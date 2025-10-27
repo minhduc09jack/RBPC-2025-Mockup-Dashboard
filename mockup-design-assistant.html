@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Design Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div>
+            <h1>Coolmate</h1>
+            <span>Sustain-Tech Platform</span>
+        </div>
+        <div class="nav">
+            <a href="/Mockup/Dashboard.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
+            <a href="#"><i data-feather="archive"></i>Inventory</a>
+            <a href="#"><i data-feather="truck"></i>Suppliers</a>
+            <a href="/Mockup/mockup-design-assistant.html" class="active"><i data-feather="cpu"></i>Design Assistant</a>
+            <a href="/Mockup/mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+            <a href="/Mockup/mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend
+                Analyst</a>
+            <a href="#"><i data-feather="settings"></i>Settings</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="panel">
+            <h2><i data-feather="cpu"></i> AI Collection Design Assistant</h2>
+            <p>Generating minimalist, profitable, and sustainable collections.</p>
+
+            <div class="design-prompt"
+                style="background: var(--dark-gray); color: var(--white); padding: 14px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <p>Prompt: <b>Minimalist Casual Collection, Organic Bamboo, Taupe/Dark Gray Palette</b></p>
+                <button>RE-GENERATE</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <div class="design-card">
+                    <img src="https://woodwose.in/wp-content/uploads/2023/03/bamboo.jpg"
+                        style="width:100%; border-radius:8px;">
+                    <div class="design-card-info">
+                        <h4>The Bamboo Daily Set</h4>
+                        <p>Durability: <b>98%</b> | Match Score: <b>88%</b></p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <img src="https://www.menswearonline.co.uk/wp-content/uploads/2024/02/ARND-x-Menswearonline2-819x1024.jpg"
+                        style="width:100%; border-radius:8px;">
+                    <div class="design-card-info">
+                        <h4>The City Smart Basic</h4>
+                        <p>Recyclability: <b>92%</b> | Match Score: <b>92%</b></p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <img src="https://assets.adidas.com/images/w_1880,f_auto,q_auto/18260606ae1646da90ba42c1f1a62fad_9366/KB5160_21_model.jpg"
+                        style="width:100%; border-radius:8px;">
+                    <div class="design-card-info">
+                        <h4>The Climate Adaptive Tee</h4>
+                        <p>CO₂ Impact: <b>Low (2.1kg)</b> | Match Score: <b>90%</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Import sidebar
+        fetch("sidebar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("sidebar-container").innerHTML = data;
+                document.querySelector('.nav a[href="ai-design.html"]').classList.add("active");
+                feather.replace();
+            });
+        feather.replace();
+    </script>
+</body>
+
+</html>
