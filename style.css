@@ -1,50 +1,63 @@
-/* ===== Root Colors ===== */
+/* ===== 1. Root Colors & Global Reset ===== */
 :root {
   --darkest: #222831;
   --dark-gray: #393E46;
   --taupe: #948979;
   --light-beige: #DFD0B8;
   --white: #FFFFFF;
+  --cream-bg: #F7F4EE;
+  --yellow-accent: #F4CE14;
 }
 
-/* ===== Reset & Layout ===== */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  display: flex;
+  display: flex; /* <-- BẬT FLEXBOX */
   min-height: 100vh;
   font-family: "Inter", system-ui, sans-serif;
-  background-color: var(--light-beige);
+  background-color: var(--cream-bg); /* Dùng màu nền #F7F4EE nhất quán */
   color: var(--darkest);
 }
 
-/* ===== Sidebar ===== */
+/* ===== 2. Layout (Sidebar & Main) ===== */
 .sidebar {
   width: 260px;
-  background-color: var(--darkest);
-  color: var(--white);
+  background-color: #2C2F36; /* Dùng màu sidebar #2C2F36 nhất quán */
+  color: #EEE9DA;
   display: flex;
   flex-direction: column;
   padding: 24px 0;
-  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.08);
-  flex-shrink: 0;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0; /* Ngăn sidebar bị co lại */
+  transition: all 0.3s ease;
 }
 
+.main {
+  flex: 1; /* <-- FIX LỖI: Bảo .main chiếm hết không gian còn lại */
+  padding: 40px;
+  overflow-y: auto; /* Cho phép cuộn nội dung nếu dài */
+}
+
+/* ===== 3. Sidebar Components ===== */
 .sidebar h1 {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 700;
+  margin: 0;
+  color: var(--white);
 }
 
 .sidebar span {
   display: block;
   text-align: center;
   font-size: 0.875rem;
-  color: #bcbcbc;
+  color: #B7B7B7;
   margin-top: 4px;
 }
 
@@ -59,10 +72,15 @@ body {
   align-items: center;
   gap: 12px;
   padding: 14px 28px;
-  color: var(--white);
+  color: #EEE9DA;
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.25s ease;
+}
+
+.nav a i {
+  width: 20px;
+  height: 20px;
 }
 
 .nav a:hover {
@@ -70,40 +88,235 @@ body {
 }
 
 .nav a.active {
-  background-color: var(--light-beige);
+  background-color: var(--yellow-accent);
   color: var(--darkest);
   font-weight: 600;
 }
 
-/* ===== Panel ===== */
-.main {
-  flex: 1;
-  padding: 40px;
-  overflow-y: auto;
+.nav a.active i {
+  stroke: var(--darkest);
 }
 
+/* ===== 4. Main Content Components (Đã gộp) ===== */
+
+/* --- Header --- */
+.main header {
+  margin-bottom: 32px;
+}
+.main header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.main header p {
+  color: #555;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+/* --- Panel (Dùng cho các trang con) --- */
 .panel {
   background-color: var(--white);
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   padding: 32px;
 }
-
 .panel h2 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--darkest);
+  margin: 0;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border-bottom: 2px solid var(--taupe);
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-
 .panel p {
-  color: var(--dark-gray);
+  color: #cecece;
+  margin-top: 6px;
+  font-size: 0.95rem;
   margin-bottom: 15px;
 }
 
-/* ===== Buttons ===== */
+/* --- KPI Cards (Trang Dashboard) --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.kpi-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.kpi-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.kpi-card-header h3 {
+  font-size: 0.95rem;
+  color: #777;
+  margin: 0;
+}
+.kpi-card-header i {
+  color: #777;
+}
+.kpi-value {
+  margin-top: 14px;
+}
+.kpi-value .value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.kpi-value .unit {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.kpi-meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* --- Charts & Workflow (Trang Dashboard) --- */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+.chart-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+.chart-card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.bar-chart {
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+}
+.bar {
+  flex: 1;
+  background: var(--darkest);
+  border-radius: 8px 8px 0 0;
+  transition: height 0.4s ease;
+}
+.workflow-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.workflow-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.workflow-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--yellow-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.workflow-icon i, .workflow-icon svg {
+  color: var(--darkest);
+  stroke: var(--darkest);
+  width: 18px;
+  height: 18px;
+}
+.workflow-item h4 {
+  margin: 0;
+  font-weight: 600;
+}
+.workflow-item p {
+  margin: 4px 0 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* --- Analysis Page Components --- */
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.metric-item {
+  background: #fdfcfb;
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  border: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.metric-item:hover {
+  background: #fff7e6;
+  border-color: #ffd966;
+}
+.score-bar {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #eee;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.score-fill {
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--darkest);
+  transition: width 0.4s ease;
+}
+.recommendation {
+  background: #2C2F36;
+  border-radius: 12px;
+  color: #EEE9DA;
+  padding: 25px;
+  text-align: center;
+}
+.recommendation i {
+  width: 32px;
+  height: 32px;
+  color: var(--yellow-accent);
+}
+.recommendation h3 {
+  color: var(--yellow-accent);
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+.recommendation span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+  margin-top: 6px;
+}
+
+/* --- Global Button Style --- */
 button {
   background-color: var(--taupe);
   color: var(--white);
@@ -114,502 +327,32 @@ button {
   cursor: pointer;
   transition: 0.25s;
 }
-
 button:hover {
   background-color: var(--dark-gray);
 }
+.recommendation button {
+  background-color: var(--yellow-accent);
+  color: var(--darkest);
+}
+.recommendation button:hover {
+  background-color: #ffe24a;
+}
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .sidebar {
-    display: none;
-  }
-  .main {
-    padding: 20px;
+/* ===== 5. Responsive Media Queries ===== */
+@media (max-width: 1024px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
   }
 }
-/* ===== Global Reset ===== */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            background-color: #F7F4EE;
-            /* soft cream background */
-            color: #222831;
-        }
-
-        /* ===== Layout ===== */
-        .dashboard {
-            display: flex;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        /* ===== Sidebar ===== */
-        .sidebar {
-            width: 260px;
-            background-color: #2C2F36;
-            color: #EEE9DA;
-            display: flex;
-            flex-direction: column;
-            padding: 24px 0;
-            box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .sidebar h1 {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-            color: #FFFFFF;
-        }
-
-        .sidebar span {
-            display: block;
-            text-align: center;
-            font-size: 0.875rem;
-            color: #B7B7B7;
-            margin-top: 4px;
-        }
-
-        .nav {
-            margin-top: 32px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .nav a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 28px;
-            color: #EEE9DA;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.25s ease;
-        }
-
-        .nav a i {
-            width: 20px;
-            height: 20px;
-        }
-
-        .nav a:hover {
-            background-color: #393E46;
-        }
-
-        .nav a.active {
-            background-color: #F4CE14;
-            color: #222831;
-            font-weight: 600;
-        }
-
-        .nav a.active i {
-            stroke: #222831;
-        }
-
-        /* ===== Main Area ===== */
-        .main {
-            flex: 1;
-            padding: 40px;
-            overflow-y: auto;
-        }
-
-        .main header {
-            margin-bottom: 32px;
-        }
-
-        .main header h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .main header p {
-            color: #555;
-            margin-top: 6px;
-            font-size: 0.95rem;
-        }
-
-        /* ===== KPI Cards ===== */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .kpi-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .kpi-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .kpi-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .kpi-card-header h3 {
-            font-size: 0.95rem;
-            color: #777;
-            margin: 0;
-        }
-
-        .kpi-card-header i {
-            color: #777;
-        }
-
-        .kpi-value {
-            margin-top: 14px;
-        }
-
-        .kpi-value .value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #222831;
-        }
-
-        .kpi-value .unit {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #222831;
-        }
-
-        .kpi-meta {
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 8px;
-        }
-
-        /* ===== Charts & Workflow ===== */
-        .chart-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 24px;
-        }
-
-        .chart-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-        }
-
-        .chart-card h3 {
-            margin-top: 0;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #222;
-            margin-bottom: 16px;
-        }
-
-        .bar-chart {
-            height: 260px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .bar {
-            flex: 1;
-            background: #222831;
-            border-radius: 8px 8px 0 0;
-            transition: height 0.4s ease;
-        }
-
-        .workflow-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .workflow-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .workflow-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #F4CE14;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .workflow-icon i {
-            color: #222831;
-        }
-
-        .workflow-item h4 {
-            margin: 0;
-            font-weight: 600;
-            color: #222;
-        }
-
-        .workflow-item p {
-            margin: 4px 0 0;
-            color: #555;
-            font-size: 0.9rem;
-        }
-
-        /* ===== Responsive ===== */
-        @media (max-width: 1024px) {
-            .chart-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .dashboard {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                flex-direction: row;
-                overflow-x: auto;
-                justify-content: space-evenly;
-            }
-
-            .main {
-                padding: 24px;
-            }
-        }
-
-        .workflow-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #FFD43B;
-            /* bright yellow */
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-        }
-
-        .workflow-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: #000;
-            /* black icon for contrast */
-        }
-        /* ===== Inherit Dashboard Style ===== */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background-color: #F7F4EE;
-      color: #222831;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* ===== SIDEBAR (copied from dashboard) ===== */
-    .sidebar {
-      width: 260px;
-      background-color: #2C2F36;
-      color: #EEE9DA;
-      display: flex;
-      flex-direction: column;
-      padding: 24px 0;
-      box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .sidebar h1 {
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0;
-      color: #FFFFFF;
-    }
-
-    .sidebar span {
-      display: block;
-      text-align: center;
-      font-size: 0.875rem;
-      color: #B7B7B7;
-      margin-top: 4px;
-    }
-
-    .nav {
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .nav a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 28px;
-      color: #EEE9DA;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: all 0.25s ease;
-    }
-
-    .nav a:hover {
-      background-color: #393E46;
-    }
-
-    .nav a.active {
-      background-color: #F4CE14;
-      color: #222831;
-      font-weight: 600;
-    }
-
-    .nav a.active i {
-      stroke: #222831;
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    .main {
-      flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-    }
-
-    .panel {
-      background-color: #fff;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-      padding: 32px;
-    }
-
-    .panel h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin: 0;
-      color: #222;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .panel p {
-      color: #555;
-      margin-top: 6px;
-      font-size: 0.95rem;
-    }
-
-    .analysis-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .metric-item {
-      background: #fdfcfb;
-      border-radius: 10px;
-      padding: 12px 18px;
-      margin-bottom: 12px;
-      border: 1px solid #eee;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.2s ease;
-    }
-
-    .metric-item:hover {
-      background: #fff7e6;
-      border-color: #ffd966;
-    }
-
-    .score-bar {
-      height: 8px;
-      border-radius: 4px;
-      background-color: #eee;
-      overflow: hidden;
-      margin-top: 4px;
-    }
-
-    .score-fill {
-      height: 100%;
-      border-radius: 4px;
-      background-color: #222831;
-      transition: width 0.4s ease;
-    }
-
-    .recommendation {
-      background: #2C2F36;
-      border-radius: 12px;
-      color: #EEE9DA;
-      padding: 25px;
-      text-align: center;
-    }
-
-    .recommendation i {
-      width: 32px;
-      height: 32px;
-      color: #F4CE14;
-    }
-
-    .recommendation h3 {
-      color: #F4CE14;
-      margin-top: 10px;
-      font-size: 1.4rem;
-    }
-
-    .recommendation span {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      display: block;
-      margin-top: 6px;
-    }
-
-    .recommendation button {
-      background-color: #F4CE14;
-      color: #222831;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.25s ease;
-      margin-top: 12px;
-    }
-
-    .recommendation button:hover {
-      background-color: #ffe24a;
-    }
-
-    @media (max-width: 900px) {
-      .analysis-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: none;
-      }
-    }
+@media (max-width: 900px) {
+  .sidebar {
+    display: none; /* Ẩn sidebar trên màn hình nhỏ */
+  }
+  .main {
+    padding: 20px; /* Giảm padding trên màn hình nhỏ */
+  }
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+}

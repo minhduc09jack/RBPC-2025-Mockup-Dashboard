@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory - Sustain-Tech</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+        .status-low {
+            color: #D9534F;
+            font-weight: 600;
+        }
+        .status-ok {
+            color: #5CB85C;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div>
+            <h1>EcoTextile</h1>
+            <span>Sustain-Tech Platform</span>
+        </div>
+        <div class="nav">
+            <a href="index.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
+            <a href="inventory.html" class="active"><i data-feather="archive"></i>Inventory</a>
+            <a href="suppliers.html"><i data-feather="truck"></i>Suppliers</a>
+            <a href="mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+            <a href="mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+            <a href="mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
+            <a href="#"><i data-feather="settings"></i>Settings</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="panel">
+            <h2><i data-feather="archive"></i> Inventory Management</h2>
+            <p>Real-time tracking of raw materials and finished goods.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>SKU</th>
+                        <th>Material</th>
+                        <th>Stock Level</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Men's Cotton Tee</td>
+                        <td>CM-TEE-001</td>
+                        <td>Recycled Cotton</td>
+                        <td>1,200 units</td>
+                        <td class="status-ok">In Stock</td>
+                    </tr>
+                    <tr>
+                        <td>Sport Shorts</td>
+                        <td>CM-SRT-004</td>
+                        <td>Recycled Polyester</td>
+                        <td>850 units</td>
+                        <td class="status-ok">In Stock</td>
+                    </tr>
+                    <tr>
+                        <td>Organic Cotton Bale</td>
+                        <td>MAT-COT-002</td>
+                        <td>Raw Material</td>
+                        <td>45 units</td>
+                        <td class="status-low">Low Stock</td>
+                    </tr>
+                    <tr>
+                        <td>Natural Dye (Indigo)</td>
+                        <td>MAT-DYE-007</td>
+                        <td>Raw Material</td>
+                        <td>300 liters</td>
+                        <td class="status-ok">In Stock</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

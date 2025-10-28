@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suppliers - Sustain-Tech</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .supplier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .supplier-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+        .supplier-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--darkest);
+        }
+        .supplier-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 4px 0 0;
+        }
+        .supplier-card .tag {
+            display: inline-block;
+            background: var(--cream-bg);
+            color: var(--dark-gray);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div>
+            <h1>EcoTextile</h1>
+            <span>Sustain-Tech Platform</span>
+        </div>
+        <div class="nav">
+            <a href="index.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
+            <a href="inventory.html"><i data-feather="archive"></i>Inventory</a>
+            <a href="suppliers.html" class="active"><i data-feather="truck"></i>Suppliers</a>
+            <a href="mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+            <a href="mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+            <a href="mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
+            <a href="#"><i data-feather="settings"></i>Settings</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="panel">
+            <h2><i data-feather="truck"></i> Supplier Directory</h2>
+            <p>Verified sustainable partners in our supply chain.</p>
+
+            <div class="supplier-grid">
+                <div class="supplier-card">
+                    <h3>VinaTex Sustainable Fabrics</h3>
+                    <p><i data-feather="map-pin" style="width:12px;"></i> Ho Chi Minh City, VN</p>
+                    <span class="tag">Recycled Cotton</span>
+                    <span class="tag">Organic Dyes</span>
+                </div>
+                
+                <div class="supplier-card">
+                    <h3>EcoWeave Textiles</h3>
+                    <p><i data-feather="map-pin" style="width:12px;"></i> Da Nang, VN</p>
+                    <span class="tag">Recycled Polyester</span>
+                </div>
+
+                <div class="supplier-card">
+                    <h3>BaoMinh Packaging</h3>
+                    <p><i data-feather="map-pin" style="width:12px;"></i> Binh Duong, VN</p>
+                    <span class="tag">FSC Certified Paper</span>
+                    <span class="tag">Biodegradable Bags</span>
+                </div>
+                
+                 <div class="supplier-card">
+                    <h3>GreenThread Logistics</h3>
+                    <p><i data-feather="map-pin" style="width:12px;"></i> Singapore</p>
+                    <span class="tag">Carbon-Neutral Shipping</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
