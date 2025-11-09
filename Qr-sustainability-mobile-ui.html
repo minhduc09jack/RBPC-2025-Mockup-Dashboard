@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoTextile QR Scan Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --green: #1a7f3c;
+            --green-dark: #14642f;
+            --gray-bg: #f6f8f6;
+            --dark-gray: #1c1c1c;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: px 0px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--gray-bg);
+            color: var(--dark-gray);
+            padding: 16px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            margin-bottom: 18px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .sub {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 14px;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+        }
+
+        .metric {
+            flex: 1;
+            text-align: center;
+        }
+
+        .metric h2 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        .metric p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f7e8;
+            color: var(--green-dark);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .journey {
+            margin-top: 12px;
+        }
+
+        .journey-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--green);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--green);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            margin-top: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--green-dark);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card header">
+        <img src="https://n7media.coolmate.me/uploads/February2025/ao-thun-nam-cotton-220gsm-mau-nau-cappuccino_(7).jpg"
+            alt="shirt">
+        <div>
+            <div class="title"> Coolmate Eco Minimal Tee</div>
+            <div class="sub">SKU: EMT-241 | Verified by EcoTextil</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="title">Sustainability Score</div>
+        <div class="sub">Evaluated across emissions, materials, and traceability</div>
+        <span class="badge">A+ Certified</span>
+
+        <div class="metrics">
+            <div class="metric">
+                <h2>1.2 kg</h2>
+                <p>CO₂ Impact</p>
+            </div>
+            <div class="metric">
+                <h2>18 L</h2>
+                <p>Water Saved</p>
+            </div>
+            <div class="metric">
+                <h2>25%</h2>
+                <p>Recycled Fiber</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="title">Product Journey</div>
+        <div class="sub">Transparent supply chain, verifiable by blockchain</div>
+        <div class="journey">
+            <div class="journey-step">
+                <div class="dot"></div>Organic bamboo farm — Quảng Nam
+            </div>
+            <div class="journey-step">
+                <div class="dot"></div>Yarn & fabric mill — Bình Dương
+            </div>
+            <div class="journey-step">
+                <div class="dot"></div>Cut & sew facility — TP.HCM
+            </div>
+            <div class="journey-step">
+                <div class="dot"></div>Retail store — Hà Nội
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="title">Care & End‑of‑Life</div>
+        <ul class="sub">
+            <li>Cold wash — lower CO₂</li>
+            <li>Natural air dry</li>
+            <li>Recycle / return program available</li>
+        </ul>
+        <button class="btn">Verify Blockchain Record</button>
+    </div>
+
+</body>
+
+</html>

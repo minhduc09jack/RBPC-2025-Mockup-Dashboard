@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<nav class="sidebar">
+            <div>
+                <h1>EcoTextile</h1>
+                <span>Sustain-Tech Platform</span>
+            </div>
+            <div class="nav">
+                <a href="index.html" ><i data-feather="bar-chart-2"></i>Dashboard</a>
+                <a href="inventory.html"><i data-feather="archive"></i>Inventory</a>
+                <a href="suppliers.html"><i data-feather="truck"></i>Suppliers</a>
+                <a href="mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+                <a href="mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+                <a href="mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
+                <a href="setting.html" class="active"><i data-feather="settings"></i>Settings</a>
+            </div>
+        </nav>
+
+<main class="main">
+  <header>
+    <h2>Settings</h2>
+    <p>Manage your profile and preferences.</p>
+  </header>
+
+  <section class="panel">
+    <h2><i data-feather="user"></i> User Info</h2>
+    <label>Username</label>
+    <input id="username" placeholder="Enter your username" style="padding:8px;width:100%;margin-bottom:10px;">
+
+    <label>Theme</label>
+    <select id="theme" style="padding:8px;width:100%;margin-bottom:20px;">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+
+    <button onclick="saveSettings()">Save</button>
+  </section>
+</main>
+
+<script>
+feather.replace();
+
+// AUTH CHECK
+if (!localStorage.getItem("currentUser")) window.location.href="login.html";
+
+const user=JSON.parse(localStorage.getItem("currentUser"));
+document.getElementById("username").value=user.username||"";
+document.getElementById("theme").value=user.theme||"light";
+document.getElementById("username-display").textContent=user.username;
+
+function saveSettings(){
+  const username=document.getElementById("username").value.trim();
+  const theme=document.getElementById("theme").value;
+  localStorage.setItem("currentUser",JSON.stringify({username,theme}));
+  alert("Settings saved!");
+}
+function logout(){
+  localStorage.removeItem("currentUser");
+  window.location.href="login.html";
+}
+</script>
+</body>
+</html>

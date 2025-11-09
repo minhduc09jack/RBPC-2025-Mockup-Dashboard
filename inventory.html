@@ -1,69 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory - Sustain-Tech</title>
+    <title>Inventory Management - EcoTextil</title>
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="style.css">
-    
+
     <style>
-        .data-table {
+        /* ===== Imported Main Theme CSS (short core extract) ===== */
+        :root {
+  --darkest: #222831;
+  --dark-gray: #393E46;
+  --taupe: #948979;
+  --light-beige: #DFD0B8;
+  --white: #FFFFFF;
+  --cream-bg: #F7F4EE;
+  --yellow-accent: #F4CE14;
+}
+
+        body {
+            background: var(--cream-bg);
+            font-family: "Inter", sans-serif;
+            display: flex;
+        }
+
+        /* .sidebar {
+            width: 260px;
+            background: #2C2F36;
+            color: #EEE9DA;
+            padding: 24px 0;
+            flex-shrink: 0;
+        } */
+
+        .nav {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav a {
+            padding: 14px 28px;
+            text-decoration: none;
+            color: #EEE9DA;
+            display: flex;
+            gap: 12px;
+            /* border-radius: 10px; */
+        }
+
+        .nav a.active,
+        .nav a:hover {
+            background: var(--yellow-accent);
+            color: var(--darkest);
+        }
+
+        .main {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .panel {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .panel h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--taupe);
+            padding-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .toolbar input {
+            padding: 10px;
+            width: 240px;
+            border-radius: 8px;
+            border: 1px solid #bbb;
+        }
+
+        .toolbar button {
+            background: var(--taupe);
+            color: var(--white);
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
+            border-radius: 12px;
+            overflow: hidden;
         }
-        .data-table th, .data-table td {
-            border: 1px solid #ddd;
+
+        th,
+        td {
             padding: 12px;
-            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
         }
-        .data-table th {
-            background-color: #f9f9f9;
-            font-weight: 600;
+
+        th {
+            background: #f3f3f3;
         }
-        .data-table tr:nth-child(even) {
-            background-color: #fdfdfd;
-        }
+
         .status-low {
             color: #D9534F;
             font-weight: 600;
         }
+
         .status-ok {
             color: #5CB85C;
+            font-weight: 600;
         }
+
+        #formModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 320px;
+        }
+
+        .modal-box input {
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-box button {
+            background: black;
+            color: var(--darkest);
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
     </style>
 </head>
 
 <body>
+
     <nav class="sidebar">
-        <div>
-            <h1>EcoTextile</h1>
-            <span>Sustain-Tech Platform</span>
-        </div>
+        <h1>EcoTextile</h1>
+        <span>Sustain‑Tech Platform</span>
         <div class="nav">
             <a href="index.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
             <a href="inventory.html" class="active"><i data-feather="archive"></i>Inventory</a>
             <a href="suppliers.html"><i data-feather="truck"></i>Suppliers</a>
-            <a href="mockup-design-assistant.html"><i data-feather="cpu"></i>Design Assistant</a>
+            <a href="mockup-design-assistant.html" ><i data-feather="cpu"></i>Design Assistant</a>
             <a href="mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
             <a href="mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
-            <a href="#"><i data-feather="settings"></i>Settings</a>
+            <a href="setting.html"><i data-feather="settings"></i>Settings</a>
         </div>
     </nav>
 
     <main class="main">
         <div class="panel">
             <h2><i data-feather="archive"></i> Inventory Management</h2>
-            <p>Real-time tracking of raw materials and finished goods.</p>
+            <p>Track raw materials & finished goods.</p>
 
-            <table class="data-table">
+            <div class="toolbar">
+                <input type="text" id="searchInput" placeholder="Search inventory...">
+                <button onclick="openForm()"><i data-feather="plus"></i> Add Item</button>
+            </div>
+
+            <table id="inventoryTable">
                 <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>SKU</th>
-                        <th>Material</th>
-                        <th>Stock Level</th>
+                        <th onclick="sortTable(0)">Item Name</th>
+                        <th onclick="sortTable(1)">SKU</th>
+                        <th onclick="sortTable(2)">Material</th>
+                        <th onclick="sortTable(3)">Stock Level</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -72,28 +209,28 @@
                         <td>Men's Cotton Tee</td>
                         <td>CM-TEE-001</td>
                         <td>Recycled Cotton</td>
-                        <td>1,200 units</td>
+                        <td>1200</td>
                         <td class="status-ok">In Stock</td>
                     </tr>
                     <tr>
                         <td>Sport Shorts</td>
                         <td>CM-SRT-004</td>
                         <td>Recycled Polyester</td>
-                        <td>850 units</td>
+                        <td>850</td>
                         <td class="status-ok">In Stock</td>
                     </tr>
                     <tr>
                         <td>Organic Cotton Bale</td>
                         <td>MAT-COT-002</td>
                         <td>Raw Material</td>
-                        <td>45 units</td>
+                        <td>45</td>
                         <td class="status-low">Low Stock</td>
                     </tr>
                     <tr>
-                        <td>Natural Dye (Indigo)</td>
+                        <td>Natural Indigo Dye</td>
                         <td>MAT-DYE-007</td>
-                        <td>Raw Material</td>
-                        <td>300 liters</td>
+                        <td>Natural Dye</td>
+                        <td>300</td>
                         <td class="status-ok">In Stock</td>
                     </tr>
                 </tbody>
@@ -101,8 +238,123 @@
         </div>
     </main>
 
+    <!-- Modal Add Form -->
+    <div id="formModal"
+        style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); justify-content:center; align-items:center;">
+        <div style="background:white; padding:20px; border-radius:10px; width:320px;">
+            <h3>Add New Item</h3><br>
+            <input id="name" placeholder="Item Name" style="width:100%; padding:8px; margin-bottom:6px;">
+            <input id="sku" placeholder="SKU" style="width:100%; padding:8px; margin-bottom:6px;">
+            <input id="mat" placeholder="Material" style="width:100%; padding:8px; margin-bottom:6px;">
+            <input id="stock" type="number" placeholder="Stock" style="width:100%; padding:8px; margin-bottom:6px;">
+            <button onclick="addItem()"
+                style="background:var(--yellow-accent); color:rgb(255, 255, 255); padding:8px; width:100%; border:none; border-radius:6px; margin-top:4px;">Save</button>
+        </div>
+    </div>
+
     <script>
-        feather.replace();
-    </script>
+feather.replace();
+
+// === LOAD DATA FROM LOCAL STORAGE ===
+window.addEventListener("DOMContentLoaded", () => {
+  const savedItems = JSON.parse(localStorage.getItem("inventory")) || [];
+  const t = document.querySelector("#inventoryTable tbody");
+
+  savedItems.forEach(item => {
+    const row = document.createElement("tr");
+    const statusClass = item.stock < 100 ? "status-low" : "status-ok";
+    const statusText = item.stock < 100 ? "Low Stock" : "In Stock";
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.sku}</td>
+      <td>${item.mat}</td>
+      <td>${item.stock}</td>
+      <td class='${statusClass}'>${statusText}</td>
+    `;
+    t.appendChild(row);
+  });
+});
+
+// === SORT TABLE ===
+function sortTable(col) {
+  const table = document.getElementById("inventoryTable");
+  const rows = Array.from(table.querySelectorAll("tbody tr"));
+  const isNumeric = !isNaN(rows[0].cells[col].innerText.trim());
+
+  rows.sort((a, b) => {
+    let A = a.cells[col].innerText.trim();
+    let B = b.cells[col].innerText.trim();
+    if (isNumeric) return Number(A) - Number(B);
+    return A.localeCompare(B);
+  });
+
+  rows.forEach(r => table.querySelector("tbody").appendChild(r));
+}
+
+// === SEARCH FILTER ===
+document.getElementById("searchInput").addEventListener("input", function () {
+  let filter = this.value.toLowerCase();
+  document.querySelectorAll("#inventoryTable tbody tr").forEach(row => {
+    row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+  });
+});
+
+// === OPEN & CLOSE FORM ===
+function openForm() { document.getElementById("formModal").style.display = "flex"; }
+function closeForm() { document.getElementById("formModal").style.display = "none"; }
+
+// Close modal when clicking outside form
+window.addEventListener("click", e => {
+  if (e.target.id === "formModal") closeForm();
+});
+
+// === ADD ITEM TO TABLE + LOCAL STORAGE ===
+function addItem() {
+  const nameVal = document.getElementById("name").value.trim();
+  const skuVal = document.getElementById("sku").value.trim();
+  const matVal = document.getElementById("mat").value.trim();
+  const stockVal = parseInt(document.getElementById("stock").value.trim(), 10);
+
+  if (!nameVal || !skuVal || !matVal || isNaN(stockVal)) {
+    alert("Please fill in all fields correctly.");
+    return;
+  }
+
+  // create row for table
+  const t = document.querySelector("#inventoryTable tbody");
+  const row = document.createElement("tr");
+  const statusClass = stockVal < 100 ? "status-low" : "status-ok";
+  const statusText = stockVal < 100 ? "Low Stock" : "In Stock";
+
+  row.innerHTML = `
+    <td>${nameVal}</td>
+    <td>${skuVal}</td>
+    <td>${matVal}</td>
+    <td>${stockVal}</td>
+    <td class='${statusClass}'>${statusText}</td>
+  `;
+  t.appendChild(row);
+
+  // === SAVE TO LOCAL STORAGE ===
+  const savedItems = JSON.parse(localStorage.getItem("inventory")) || [];
+  savedItems.push({
+    name: nameVal,
+    sku: skuVal,
+    mat: matVal,
+    stock: stockVal
+  });
+  localStorage.setItem("inventory", JSON.stringify(savedItems));
+
+  // reset form
+  document.getElementById("name").value = "";
+  document.getElementById("sku").value = "";
+  document.getElementById("mat").value = "";
+  document.getElementById("stock").value = "";
+  closeForm();
+}
+</script>
+
+
 </body>
+
 </html>
