@@ -11,74 +11,235 @@
 
 <body>
     <nav class="sidebar">
-            <div>
-                <h1>EcoTextile</h1>
-                <span>Sustain-Tech Platform</span>
-            </div>
-            <div class="nav">
-                <a href="index.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
-                <a href="inventory.html"><i data-feather="archive"></i>Inventory</a>
-                <a href="suppliers.html"><i data-feather="truck"></i>Suppliers</a>
-                <a href="mockup-design-assistant.html" class="active"><i data-feather="cpu"></i>Design Assistant</a>
-                <a href="mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
-                <a href="mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
-                <a href="setting.html"><i data-feather="settings"></i>Settings</a>
-            </div>
-        </nav>
+        <div>
+            <h1>EcoTextile</h1>
+            <span>Sustain-Tech Platform</span>
+        </div>
+        <div class="nav">
+            <a href="index.html"><i data-feather="bar-chart-2"></i>Dashboard</a>
+            <a href="inventory.html"><i data-feather="archive"></i>Inventory</a>
+            <a href="suppliers.html"><i data-feather="truck"></i>Suppliers</a>
+            <a href="mockup-design-assistant.html" class="active"><i data-feather="cpu"></i>Design Assistant</a>
+            <a href="mockup-fabric-analysis.html"><i data-feather="layers"></i>Fabric Optimization</a>
+            <a href="mockup-trend-analyzer.html"><i data-feather="trending-up"></i>Trend Analyst</a>
+            <a href="setting.html"><i data-feather="settings"></i>Settings</a>
+        </div>
+    </nav>
 
     <main class="main">
-        <div class="panel">
-            <h2><i data-feather="cpu"></i> AI Collection Design Assistant</h2>
-            <p style="color: rgb(82, 82, 82); font-style:italic">Generating minimalist, profitable, and sustainable collections.</p>
+    <div class="panel">
+        <h2><i data-feather="cpu"></i> AI Collection Design Assistant</h2>
+        <p style="color: rgb(82,82,82); font-style: italic;">
+            Generating minimalist, profitable, and sustainable collections.
+        </p>
 
-            <div class="design-prompt"
-                style="background: var(--dark-gray); color: var(--white); padding: 14px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <p>Prompt: <b>Minimalist Casual Collection, Organic Bamboo, Taupe/Dark Gray Palette</b></p>
-                <button>RE-GENERATE</button>
+        <div class="design-prompt"
+            style="background: var(--dark-gray); color: var(--white); padding: 14px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <p>Prompt: <b>Minimalist Casual Collection, Organic Bamboo, Taupe/Dark Gray Palette</b></p>
+            <button>RE-GENERATE</button>
+        </div>
+
+        <!-- FIXED GRID -->
+        <div class="design-grid" 
+             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px;">
+
+            <!-- CARD 1 -->
+            <div class="design-card"
+                data-title="The Bamboo Daily Set"
+                data-description="Basic outfit from organic bamboo. 98% durable, light, airy, suitable for minimalist style"
+                data-material="95% Organic Bamboo – 5% Spandex"
+                data-co2="1.9kg CO₂/unit"
+                data-score="Match Score: 88%"
+                data-image="https://woodwose.in/wp-content/uploads/2023/03/bamboo.jpg">
+
+                <img src="https://woodwose.in/wp-content/uploads/2023/03/bamboo.jpg"
+                     style="width:100%; border-radius: 8px;">
+
+                <div class="design-card-info">
+                    <h4>The Bamboo Daily Set</h4>
+                    <p style="color: rgb(138, 138, 138);">Durability: <b>98%</b> | Match Score: <b>88%</b></p>
+                </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                <div class="design-card">
-                    <img src="https://woodwose.in/wp-content/uploads/2023/03/bamboo.jpg"
-                        style="width:100%; border-radius:8px;">
-                    <div class="design-card-info">
-                        <h4>The Bamboo Daily Set</h4>
-                        <p style="color: rgb(138, 138, 138);">Durability: <b>98%</b> | Match Score: <b>88%</b></p>
-                    </div>
-                </div>
+            <!-- CARD 2 -->
+            <div class="design-card"
+                data-title="The City Smart Basic"
+                data-description="Elegant basic fit shirt for urban lifestyle. Recyclability 92%."
+                data-material="60% rPET – 40% Bamboo Charcoal"
+                data-co2="2.4kg CO₂/unit"
+                data-score="Match Score: 92%"
+                data-image="https://www.menswearonline.co.uk/wp-content/uploads/2024/02/ARND-x-Menswearonline2-819x1024.jpg">
 
-                <div class="design-card">
-                    <img src="https://www.menswearonline.co.uk/wp-content/uploads/2024/02/ARND-x-Menswearonline2-819x1024.jpg"
-                        style="width:100%; border-radius:8px;">
-                    <div class="design-card-info">
-                        <h4>The City Smart Basic</h4>
-                        <p style="color: rgb(138, 138, 138);">Recyclability: <b>92%</b> | Match Score: <b>92%</b></p>
-                    </div>
-                </div>
+                <img src="https://www.menswearonline.co.uk/wp-content/uploads/2024/02/ARND-x-Menswearonline2-819x1024.jpg"
+                     style="width:100%; border-radius: 8px;">
 
-                <div class="design-card">
-                    <img src="https://assets.adidas.com/images/w_1880,f_auto,q_auto/18260606ae1646da90ba42c1f1a62fad_9366/KB5160_21_model.jpg"
-                        style="width:100%; border-radius:8px;">
-                    <div class="design-card-info">
-                        <h4>The Climate Adaptive Tee</h4>
-                        <p style="color: rgb(138, 138, 138);">CO₂ Impact: <b>Low (2.1kg)</b> | Match Score: <b>90%</b></p>
-                    </div>
+                <div class="design-card-info">
+                    <h4>The City Smart Basic</h4>
+                    <p style="color: rgb(138, 138, 138);">Recyclability: <b>92%</b> | Match Score: <b>92%</b></p>
                 </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="design-card"
+                data-title="The Climate Adaptive Tee"
+                data-description="PCM technology tee self-regulating temperature. Low CO₂, high durability."
+                data-material="50% PCM Fiber – 30% Cotton – 20% Tencel"
+                data-co2="2.1kg CO₂/unit"
+                data-score="Match Score: 90%"
+                data-image="https://assets.adidas.com/images/w_1880,f_auto,q_auto/18260606ae1646da90ba42c1f1a62fad_9366/KB5160_21_model.jpg">
+
+                <img src="https://assets.adidas.com/images/w_1880,f_auto,q_auto/18260606ae1646da90ba42c1f1a62fad_9366/KB5160_21_model.jpg"
+                     style="width:100%; border-radius: 8px;">
+
+                <div class="design-card-info">
+                    <h4>The Climate Adaptive Tee</h4>
+                    <p style="color: rgb(138, 138, 138);">CO₂ Impact: <b>Low (2.1kg)</b> | Match Score: <b>90%</b></p>
+                </div>
+            </div>
+
+        </div> <!-- end grid -->
+    </div>
+</main>
+
+
+    
+
+    <!-- PRODUCT MODAL -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <img id="modalImage" class="modal-image" />
+
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+
+            <div class="modal-details">
+                <p><b>Material:</b> <span id="modalMaterial"></span></p>
+                <p><b>Carbon Impact:</b> <span id="modalCO2"></span></p>
+                <p><b>Score:</b> <span id="modalScore"></span></p>
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
-        // Import sidebar
-        fetch("sidebar.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("sidebar-container").innerHTML = data;
-                document.querySelector('.nav a[href="ai-design.html"]').classList.add("active");
-                feather.replace();
-            });
-        feather.replace();
-    </script>
+    feather.replace();
+
+    document.querySelectorAll(".design-card").forEach(card => {
+        card.addEventListener("click", () => {
+            document.getElementById("modalTitle").textContent = card.dataset.title;
+            document.getElementById("modalDescription").textContent = card.dataset.description;
+            document.getElementById("modalMaterial").textContent = card.dataset.material;
+            document.getElementById("modalCO2").textContent = card.dataset.co2;
+            document.getElementById("modalScore").textContent = card.dataset.score;
+            document.getElementById("modalImage").src = card.dataset.image;
+
+            document.getElementById("productModal").style.display = "block";
+        });
+    });
+
+    document.querySelector(".close").onclick = () => {
+        document.getElementById("productModal").style.display = "none";
+    };
+
+    window.onclick = (event) => {
+        if (event.target == document.getElementById("productModal")) {
+            document.getElementById("productModal").style.display = "none";
+        }
+    };
+</script>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.35);
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            width: 420px;
+            margin: 100px auto;
+            padding: 28px;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease-out;
+            color: white;
+            text-align: center;
+        }
+
+        .close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: white;
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .close:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .modal-image {
+            width: 100%;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-details {
+            margin-top: 16px;
+            text-align: left;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 15px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                width: 90%;
+                padding: 24px;
+            }
+        }
+    </style>
+
+
+
 </body>
 
 </html>
